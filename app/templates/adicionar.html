@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %} LangSoft - Adicionar Vídeo {% endblock %}
+
+{% block main %}
+
+
+<div class="container-fluid" style="margin: auto">
+
+    <h3>Adicionar</h3>
+
+
+    <form action="" method="POST" style="display: flex; flex-direction: row;">
+        {{ form.csrf_token }}
+        <div>
+            <label>Nome do Vídeo</label>
+            {{form.pesquisa(class="form-control")}}
+        </div>
+        <div style="margin-left: 10px; margin-top: 33px;">
+            <button type="submit" class="btn btn-light btn-icon-split">
+
+                <span class="icon text-gray-600">
+                    <i class="fas fa-arrow-right"></i>
+                </span>
+                <span class="text">Pesquisar</span>
+            </button>
+        </div>
+    </form>
+    {% if form.errors.pesquisa%}
+    <div style="color: red"> Insira um termo</div>
+    {% endif %}
+
+    {% if form.validate_on_submit() and videos%}
+    <br />
+    <br />
+    <br />
+
+    <h4>Resultado da Pesquisa</h3>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <br />
+                <h6 class="m-0 font-weight-bold text-primary">Escolha
+                    o vídeo que deseja adicionar
+                </h6>
+                <br />
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Título do Vídeo</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            {% for video in videos%}
+                            {%with img = video['img']%}
+                            <tr>
+                                <td>
+                                    <div class="row">
+                                        <a href="{{ url_for('adicionarVideo', videoId=video['id']) }}" class="col-lg-2 d-none d-lg-block" style="background: url('{{img}}');
+                                            background-position: center;
+                                            background-size: cover;
+                                            padding: 50px;"></a>
+                                        <div class="col-lg-10 d-flex align-content-center flex-wrap"><a
+                                                href="{{ url_for('adicionarVideo', videoId=video['id']) }}">
+                                                {{ video['titulo'] }}
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                            {%endwith%}
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        {% elif form.validate_on_submit() and not videos%}
+        <br />
+        <br />
+        <br />
+        <h5 style="color: red">Nenhum Resultado Encontrado
+    </h4>
+    {% endif %}
+
+    <div style="padding: 180px;"></div>
+
+</div>
+
+
+{% endblock %}

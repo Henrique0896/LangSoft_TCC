@@ -1,0 +1,529 @@
+{% extends 'base.html' %}
+
+{% block title %} LangSoft - {{objeto['geral']['titulo']}} {% endblock %}
+
+{% block main %}
+
+
+
+<div class="container-fluid " style="margin: auto">
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+        <h3 class="h3 mb-0 text-gray-800">{{objeto['geral']['titulo']}}</h3>
+
+        <!-- Botão Editar -->
+        <div style="margin-bottom: 30px; margin-left: 15px ;">
+            <a href="{{ url_for('editar', objetoId=objetoId) }}" class="btn btn-warning btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-pen"></i>
+                </span>
+                <span class="text">Editar</span>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="d-sm-flex justify-content-between" style="margin-left: 15px; margin-top: 10px;">
+                <h4 class="m-0 font-weight-bold text-primary">Geral</h4>
+                <!-- Botão Minimizar -->
+                <div id="minimizeGeral" style=" margin-top: -10px ;">
+                    <a class="btn btn-info btn-circle">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-compress"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="geral" class="card-body">
+            <div class="table-responsive">
+                <div class="row">
+                    <div class="col-sm">
+                        <p><b>Identificador:</b></p>
+                        <div style="margin-left: 15px;">
+                            <p><b>Catálogo:</b> {{objeto['geral']['identificador']['catalogo']}}</p>
+                            <p><b>Entrada:</b> {{objeto['geral']['identificador']['entrada']}}</p>
+                        </div>
+                        <p><b>Título:</b> {{objeto['geral']['titulo']}}</p>
+                        <p><b>Idioma:</b> {{objeto['geral']['idioma']}}</p>
+                        <p><b>Descrição:</b> {{objeto['geral']['descricao']}}</p>
+                        <p><b>Palavras Chave:</b> {{objeto['geral']['palavras_chave']}}</p>
+                        <p><b>Cobertura:</b> {{objeto['geral']['cobertura']}}</p>
+                        <p><b>Estrutura:</b> {{objeto['geral']['estrutura']}}</p>
+                        <p><b>Nível de Agregação:</b> {{objeto['geral']['nivel_de_agregacao']}}</p>
+                        <p><b>Sub nível de Agregação:</b> {{objeto['geral']['subnivel_de_agregacao']}}</p>
+                        <p><b>Outros termos:</b> {{objeto['geral']['outros_termos']}}</p>
+                        <p><b>Termos:</b> {{objeto['geral']['termos']}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="d-sm-flex justify-content-between" style="margin-left: 15px; margin-top: 10px;">
+                <h4 class="m-0 font-weight-bold text-primary">Ciclo de Vida</h4>
+
+                <!-- Botão Minimizar -->
+                <div id="minimizeCiclo" style=" margin-top: -10px ;">
+                    <a class="btn btn-info btn-circle">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-compress"></i>
+                        </span>
+
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="ciclo" class="card-body">
+            <div class="table-responsive">
+                <div class="row">
+                    <div class="col-sm">
+                        <p><b>Versão:</b> {{objeto['ciclo_de_vida']['versao']}}</p>
+                        <p><b>Status:</b> {{objeto['ciclo_de_vida']['status']}}</p>
+                        <p><b>Contribuinte:</b><br />
+                        <div style="margin-left: 15px;">
+                            <p><b>Entidade:</b> {{objeto['ciclo_de_vida']['contribuinte']['entidade']}}</p>
+                            <p><b>Data:</b> {{objeto['ciclo_de_vida']['contribuinte']['data']}}</p>
+                            <p><b>Papel:</b> {{objeto['ciclo_de_vida']['contribuinte']['papel']}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="d-sm-flex justify-content-between" style="margin-left: 15px; margin-top: 10px;">
+                <h4 class="m-0 font-weight-bold text-primary">Meta Metadados</h4>
+
+                <!-- Botão Minimizar -->
+                <div id="minimizeMeta" style=" margin-top: -10px ;">
+                    <a class="btn btn-info btn-circle">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-compress"></i>
+                        </span>
+
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="meta" class="card-body">
+            <div class="table-responsive">
+                <div class="row">
+                    <div class="col-sm">
+                        <p><b>Identificador:</b></p>
+                        <div style="margin-left: 15px;">
+                            <p><b>Catalogo:</b> {{objeto['meta_metadados']['identificador']['catalogo']}}</p>
+                            <p><b>Entrada:</b> {{objeto['meta_metadados']['identificador']['entrada']}}</p>
+                        </div>
+                        <p><b>Contribuinte</b></p>
+                        <div style="margin-left: 15px;">
+                            <p><b>Entidade:</b> {{objeto['meta_metadados']['contribuinte']['entidade']}}</p>
+                            <p><b>Data:</b> {{objeto['meta_metadados']['contribuinte']['data']}}</p>
+                            <p><b>Papel:</b> {{objeto['meta_metadados']['contribuinte']['papel']}}</p>
+                        </div>
+                        <p><b>Esquema de Metadados:</b> {{objeto['meta_metadados']['esquema_de_metadados']}}</p>
+                        <p><b>Idioma:</b> {{objeto['meta_metadados']['idioma']}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="card shadow mb-4">
+
+        <div class="card-header py-3">
+            <div class="d-sm-flex justify-content-between" style="margin-left: 15px; margin-top: 10px;">
+                <h4 class="m-0 font-weight-bold text-primary">Dados Técnicos</h4>
+
+                <!-- Botão Minimizar -->
+                <div id="minimizeMetadados" style=" margin-top: -10px ;">
+                    <a class="btn btn-info btn-circle">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-compress"></i>
+                        </span>
+
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="metadados" class="card-body">
+            <div class="table-responsive">
+                <div class="row">
+                    <div class="col-sm">
+                        <p><b>Formato:</b> {{objeto['dados_tecnicos']['formato']}}</p>
+                        <p><b>Tamanho:</b> {{objeto['dados_tecnicos']['tamanho']}}</p>
+                        <p><b>Localização:</b> {{objeto['dados_tecnicos']['localizacao']}}</p>
+                        <p><b>Requisitos:</b> {{objeto['dados_tecnicos']['requisitos']}}</p>
+                        <p><b>Ou Composto:</b></p>
+
+                        <div style="margin-left: 15px;">
+                            <p><b>Tipo:</b> {{objeto['dados_tecnicos']['ou_composto']['tipo']}}</p>
+                            <p><b>Nome:</b> {{objeto['dados_tecnicos']['ou_composto']['nome']}}</p>
+                            <p><b>Versão Mínima:</b> {{objeto['dados_tecnicos']['ou_composto']['versao_minima']}}</p>
+                            <p><b>Versão Máxima:</b> {{objeto['dados_tecnicos']['ou_composto']['versao_maxima']}}</p>
+                        </div>
+                        <p><b>Observações de Instalação:</b>
+                            {{objeto['dados_tecnicos']['observacoes_de_instalacao']}}</p>
+                            <p><b>Outros Requisitos de Sistema:</b>
+                                {{objeto['dados_tecnicos']['outros_requisitos_de_sistema']}}</p>
+                        <p><b>Duração:</b> {{objeto['dados_tecnicos']['duracao']}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="d-sm-flex justify-content-between" style="margin-left: 15px; margin-top: 10px;">
+                <h4 class="m-0 font-weight-bold text-primary">Aspectos Educacionais</h4>
+
+                <!-- Botão Minimizar -->
+                <div id="minimizeAspectos" style=" margin-top: -10px ;">
+                    <a class="btn btn-info btn-circle">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-compress"></i>
+                        </span>
+
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="aspectos" class="card-body">
+            <div class="table-responsive">
+                <div class="row">
+                    <div class="col-sm">
+                        <p><b>Tipo de interatividade:</b>
+                            {{objeto['aspectos_educacionais']['tipo_de_interatividade']}}
+                        </p>
+                        <p><b>Tipo de recurso de aprendizado:</b>
+                            {{objeto['aspectos_educacionais']['tipo_de_recurso_de_aprendizado']}}</p>
+                        <p><b>Nível de iteratividade:</b>
+                            {{objeto['aspectos_educacionais']['nivel_de_interatividade']}}</p>
+                        <p><b>Densidade Semântica:</b> {{objeto['aspectos_educacionais']['densidade_semantica']}}
+                        </p>
+                        <p><b>Usuário final:</b> {{objeto['aspectos_educacionais']['usuario_final']}}</p>
+                        <p><b>Contexto de aprendizagem:</b>
+                            {{objeto['aspectos_educacionais']['contexto_de_aprendizagem']}}</p>
+                        <p><b>Idade Recomendada:</b> {{objeto['aspectos_educacionais']['idade_recomendada']}}</p>
+                        <p><b>Grau de Dificuldade:</b> {{objeto['aspectos_educacionais']['grau_de_dificuldade']}}
+                        </p>
+                        <p><b>Tempo de Aprendizado:</b> {{objeto['aspectos_educacionais']['tempo_de_aprendizado']}}
+                        </p>
+                        <p><b>Descrição:</b> {{objeto['aspectos_educacionais']['descricao']}}</p>
+                        <p><b>Linguagem:</b> {{objeto['aspectos_educacionais']['linguagem']}}</p>
+                        <p><b>Domínio Cognitivo:</b> {{objeto['aspectos_educacionais']['dominio_cognitivo']}}</p>
+                        <p><b>Estratégia Cognitiva:</b> {{objeto['aspectos_educacionais']['estrategia_cognitiva']}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="d-sm-flex justify-content-between" style="margin-left: 15px; margin-top: 10px;">
+                <h4 class="m-0 font-weight-bold text-primary">Direitos</h4>
+
+                <!-- Botão Minimizar -->
+                <div id="minimizeDireitos" style=" margin-top: -10px ;">
+                    <a class="btn btn-info btn-circle">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-compress"></i>
+                        </span>
+
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="direitos" class="card-body">
+            <div class="table-responsive">
+                <div class="row">
+                    <div class="col-sm">
+                        <p><b>Custo:</b> {{objeto['direitos']['custo']}}</p>
+                        <p><b>Direitos Autorais:</b> {{objeto['direitos']['direitos_autorais']}}</p>
+                        <p><b>Descrição:</b> {{objeto['direitos']['descricao']}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="d-sm-flex justify-content-between" style="margin-left: 15px; margin-top: 10px;">
+                <h4 class="m-0 font-weight-bold text-primary">Relações</h4>
+
+                <!-- Botão Minimizar -->
+                <div id="minimizeRelacoes" style=" margin-top: -10px ;">
+                    <a class="btn btn-info btn-circle">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-compress"></i>
+                        </span>
+
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="relacoes" class="card-body">
+            <div class="table-responsive">
+                <div class="row">
+                    <div class="col-sm">
+                        <p><b>Tipo:</b> {{objeto['relacoes']['tipo']}}</p>
+                        <p><b>Recurso:</b> {{objeto['relacoes']['recurso']}}</p>
+                        <p><b>Identificador:</b></p>
+                        <div style="margin-left: 15px;">
+                            <p><b>Catalogo:</b> {{objeto['relacoes']['identificador']['catalogo']}}</p>
+                            <p><b>Entrada:</b> {{objeto['relacoes']['identificador']['entrada']}}</p>
+                        </div>
+                        <p><b>Descrição:</b> {{objeto['relacoes']['descricao']}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+     <!-- DataTales Example -->
+     <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="d-sm-flex justify-content-between" style="margin-left: 15px; margin-top: 10px;">
+                <h4 class="m-0 font-weight-bold text-primary">Anotações</h4>
+
+                <!-- Botão Minimizar -->
+                <div id="minimizeAnotacoes" style=" margin-top: -10px ;">
+                    <a class="btn btn-info btn-circle">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-compress"></i>
+                        </span>
+
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="anotacoes" class="card-body">
+            <div class="table-responsive">
+                <div class="row">
+                    <div class="col-sm">
+                        <p><b>Entidade:</b> {{objeto['anotacoes']['entidade']}}</p>
+                        <p><b>Data:</b> {{objeto['anotacoes']['data']}}</p>
+                        <p><b>Descrição:</b> {{objeto['anotacoes']['descricao']}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="d-sm-flex justify-content-between" style="margin-left: 15px; margin-top: 10px;">
+                <h4 class="m-0 font-weight-bold text-primary">Classificação</h4>
+
+                <!-- Botão Minimizar -->
+                <div id="minimizeClassificacao" style=" margin-top: -10px ;">
+                    <a class="btn btn-info btn-circle">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-compress"></i>
+                        </span>
+
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="classificacao" class="card-body">
+            <div class="table-responsive">
+                <div class="row">
+                    <div class="col-sm">
+                        <p><b>Propósito:</b> {{objeto['classificacao']['proposito']}}</p>
+                        <p><b>Caminho Táxon:</b> 
+                        <div style="margin-left: 15px;">
+                            <p><b>Fonte:</b> {{objeto['classificacao']['caminho_taxon']['fonte']}}</p>
+                            <p><b>Táxon:</b> {{objeto['classificacao']['caminho_taxon']['taxon']}}</p>
+                            <p><b>Id:</b> {{objeto['classificacao']['caminho_taxon']['id']}}</p>
+                            <p><b>Entrada:</b> {{objeto['classificacao']['caminho_taxon']['entrada']}}</p>
+                        </div>
+                        <p><b>Descrição:</b> {{objeto['classificacao']['descricao']}}</p>
+                        <p><b>Palavras Chave:</b> {{objeto['classificacao']['palavras_chave']}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <a style="margin-top: 20px;" href="/" class="btn btn-info btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-home"></i>
+        </span>
+        <span class="text">Voltar</span>
+    </a>
+
+
+
+    <div style="padding: 220px;"></div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    $("#minimizeGeral").click(
+        function () {
+            if ($("#geral").is(":visible")) {
+                $("#geral").css("display", "none")
+            } else {
+                $("#geral").css("display", "block")
+            }
+        })
+    $("#minimizeCiclo").click(
+        function () {
+            if ($("#ciclo").is(":visible")) {
+                $("#ciclo").css("display", "none")
+            } else {
+                $("#ciclo").css("display", "block")
+            }
+        })
+    $("#minimizeMeta").click(
+        function () {
+            if ($("#meta").is(":visible")) {
+                $("#meta").css("display", "none")
+            } else {
+                $("#meta").css("display", "block")
+            }
+        })
+    $("#minimizeMetadados").click(
+        function () {
+            if ($("#metadados").is(":visible")) {
+                $("#metadados").css("display", "none")
+            } else {
+                $("#metadados").css("display", "block")
+            }
+        })
+    $("#minimizeAspectos").click(
+        function () {
+            if ($("#aspectos").is(":visible")) {
+                $("#aspectos").css("display", "none")
+            } else {
+                $("#aspectos").css("display", "block")
+            }
+        })
+    $("#minimizeDireitos").click(
+        function () {
+            if ($("#direitos").is(":visible")) {
+                $("#direitos").css("display", "none")
+            } else {
+                $("#direitos").css("display", "block")
+            }
+        })
+    $("#minimizeRelacoes").click(
+        function () {
+            if ($("#relacoes").is(":visible")) {
+                $("#relacoes").css("display", "none")
+            } else {
+                $("#relacoes").css("display", "block")
+            }
+        })
+    $("#minimizeClassificacao").click(
+        function () {
+            if ($("#classificacao").is(":visible")) {
+                $("#classificacao").css("display", "none")
+            } else {
+                $("#classificacao").css("display", "block")
+            }
+        })
+    
+        $("#minimizeAnotacoes").click(
+        function () {
+            if ($("#anotacoes").is(":visible")) {
+                $("#anotacoes").css("display", "none")
+            } else {
+                $("#anotacoes").css("display", "block")
+            }
+        })
+</script>
+
+
+
+{% endblock %}
